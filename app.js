@@ -1,7 +1,7 @@
 "use strict"
 var deck = [];
 var playersDeck = [];
-var cardSequence = ["ace","2","3","4","5","6","7","8","9","10","jack","queen","king"];
+
 function deckBuilder(deckArray) {
 	let suits = ["hearts", "diamonds", "spades", "clovers"]
 	for(let i = 0; i < suits.length; i++) {
@@ -15,7 +15,9 @@ function deckBuilder(deckArray) {
 	}
 	return deckArray;
 }
+modeules.exports = deckBuilder;
 function buildSuit(suitName) {
+	var cardSequence = ["ace","2","3","4","5","6","7","8","9","10","jack","queen","king"];
 	let suitArray = [];
 	for(let i = 0; i < 13; i++) {
 		let card = {
@@ -26,6 +28,8 @@ function buildSuit(suitName) {
 	}
 	return suitArray;
 }
+module.exports = buildSuit; 
+
 function dealDeck(totalPlayers, deck, players) {
 	let pile = deck;
 	let cardsToDeal = getCardsToDeal(deck, totalPlayers);
@@ -37,6 +41,8 @@ function dealDeck(totalPlayers, deck, players) {
 		}
 	}
 }
+module.exports = dealDeck;
+
 function getCardsToDeal(deck, totalPlayers) {
 	let remainder = deck.length % totalPlayers;
 	let numberToDeal = deck.length - remainder;
@@ -72,12 +78,18 @@ function playerBuilder(totalPlayers) {
 	}
 	return players;
 }
-
+function shuffle(deck) {
+	let shuffled = deck.sort(function(a,b){return .5 - Math.random()});
+	return shuffled;
+}
+modules.exports = shuffle;
 function runProgram() {
 	let numberOfPlayers = getPlayers();
 	deck = deckBuilder(deck);
 	alert("Deck is being shuffled");
-	deck.sort(function(a,b){return .5 - Math.random()});
+	deck = shuffle(deck);
 	playersDeck = playerBuilder(numberOfPlayers);
 	dealDeck(numberOfPlayers, deck, playersDeck);
 }
+
+//see app.spec.js for unit tests written using jasmine
