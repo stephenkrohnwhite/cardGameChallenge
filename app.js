@@ -15,7 +15,7 @@ function deckBuilder(deckArray) {
 	}
 	return deckArray;
 }
-modeules.exports = deckBuilder;
+module.exports = deckBuilder;
 function buildSuit(suitName) {
 	var cardSequence = ["ace","2","3","4","5","6","7","8","9","10","jack","queen","king"];
 	let suitArray = [];
@@ -82,7 +82,7 @@ function shuffle(deck) {
 	let shuffled = deck.sort(function(a,b){return .5 - Math.random()});
 	return shuffled;
 }
-modules.exports = shuffle;
+module.exports = shuffle;
 function runProgram() {
 	let numberOfPlayers = getPlayers();
 	deck = deckBuilder(deck);
