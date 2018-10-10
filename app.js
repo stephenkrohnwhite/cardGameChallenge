@@ -1,5 +1,6 @@
 "use strict"
 var deck = [];
+module.exports = deck;
 var playersDeck = [];
 
 function deckBuilder(deckArray) {

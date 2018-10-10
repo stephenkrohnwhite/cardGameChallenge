@@ -1,7 +1,11 @@
 var BuildSuit = require("../app");
 var DeckBuilder = require("../app");
 var Shuffle = require("../app");
-var DealDeck = require("../app")
+var DealDeck = require("../app");
+var Deck = require("../app");
+
+// apologies if the syntax for tests is off in places
+// I am brand new to node.js and jasmine!
 
 describe("BuildSuit functionality", function() {
     beforeEach(function() {
@@ -24,19 +28,19 @@ describe("BuildSuit functionality", function() {
 
 describe("DeckBuilder functionality", function() {
     beforeEach(function() {
-        let deck = [];
-        deck = DeckBuilder(deck);
+        Deck = [];
+        Deck = DeckBuilder(Deck);
     });
 
     it("deck length is 52", function() {
-        expect(deck.length).toEqual(52);
+        expect(Deck.length).toEqual(52);
     });
     it("deck to have 13 cards whose suit is 'diamonds'", function() {
-        const result = deck.filter(card => card.suit == "diamonds");
+        const result = Deck.filter(card => card.suit == "diamonds");
         expect(result).toEqual(13);
     });
     it("deck to have 4 cards whose cardvalue equals 'ace'", function() {
-        const result = deck.filter(card => cardValue == "ace");
+        const result = Deck.filter(card => cardValue == "ace");
     });
 });
 describe("Shuffle functionality", function() {
@@ -63,12 +67,12 @@ describe("Shuffle functionality", function() {
             let playersDeck = [];
         });
         it("testing 4 player game where one player gets every 4th card", function() {
-            dealDeck(playersDeck, deck, 4);
+            DealDeck(playersDeck, deck, 4);
             expect(playersDeck[0].pile[0] == deck[0] && playersDeck[0].pile[4] == deck[4]).toEqual(true);
         });
         it("in 10 player game each player dealt 5 cards", function() {
-            dealDeck(playersDeck, deck, 10);
+            DealDeck(playersDeck, deck, 10);
             expect(playersDeck[3].pile.length == 5).toEqual(true);
-        });
+        });n
     })
 })
